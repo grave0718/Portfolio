@@ -1,0 +1,795 @@
+:root {
+    --bg-color: oklch(0.02 0 0);
+    /* 배경: 완전 검정보다 약간 깊이감 있는 블랙 */
+    --card-bg: oklch(0.07 0 0);
+    /* 카드 배경: 짙은 회색 */
+    --text-main: oklch(1 0 0);
+    --text-sub: oklch(0.63 0 0);
+    /* 서브 텍스트: 회색 */
+    --accent: oklch(1 0 0);
+    /* 강조색: 화이트 */
+    --border: oklch(0.2 0 0);
+    /* 경계선 색상 */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pretendard', 'Inter', sans-serif;
+    /* 폰트가 핵심입니다 */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--text-main);
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 80vh;
+    padding: 0 10%;
+}
+
+.hero-text {
+    flex: 1.2;
+}
+
+.badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    border: 1px solid var(--border);
+    margin-bottom: 2rem;
+    display: inline-block;
+}
+
+.hero-text h1 {
+    font-size: 4.5rem;
+    /* 크게 가야 느낌이 납니다 */
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-text p {
+    color: var(--text-sub);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.hero-text strong {
+    color: var(--text-main);
+}
+
+.hero-visual {
+    flex: 0.8;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.image-card {
+    position: relative;
+    max-width: 450px;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.image-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-bg-front, .card-bg-back {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 24px;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #2a2a2a;
+    background-color: var(--card-bg);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.25s, box-shadow 0.5s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.card-bg-front {
+    background-image: url('Images/Profile/IMG_20240602_171643_382.webp'); 
+    transform: rotate(0deg) translate(0px, 0px);
+    z-index: 2;
+}
+
+.card-bg-back {
+    background-image: url('https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?auto=format&fit=crop&q=80&w=600'); 
+    transform: rotate(-3deg) translate(-10px, 5px);
+    z-index: 1;
+}
+
+.image-card:hover .card-bg-front {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.image-card.swapped .card-bg-front {
+    transform: rotate(-3deg) translate(-10px, 5px);
+    z-index: 1;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.image-card.swapped .card-bg-back {
+    transform: rotate(0deg) translate(0px, 0px);
+    z-index: 2;
+}
+
+.image-card.swapped:hover .card-bg-back {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Removed `::before` tilted line, combined with real layered cards */
+
+.badge-unity {
+    background: #000;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.cta-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-primary {
+    background: #fff;
+    color: #000;
+    padding: 15px 35px;
+    border-radius: 12px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}
+
+.social-links i {
+    font-size: 1.2rem;
+    color: var(--text-sub);
+    margin-left: 15px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+.about-me {
+    padding: 5rem 10%;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.about-content {
+    display: flex;
+    gap: 60px;
+    margin-top: 40px;
+}
+
+.content-left {
+    flex: 1.2;
+}
+
+.content-right {
+    flex: 0.8;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.tech-card,
+.background-box {
+    background: #121212;
+    border: 1px solid #2a2a2a;
+    padding: 24px;
+    border-radius: 16px;
+}
+
+.section-title p {
+    color: var(--text-sub);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.background-box p {
+    color: var(--text-sub);
+}
+
+h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+.timeline {
+    position: relative;
+}
+
+.timeline-item {
+    position: relative;
+    background: #121212;
+    border: 1px solid #2a2a2a;
+    padding: 24px;
+    border-radius: 16px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+
+/* 수직 선 */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    transform: translateX(-50%);
+    top: 10px;
+    bottom: 0;
+    width: 2px;
+    background: #333;
+}
+
+/* 타임라인 원 */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -15.5px;
+    transform: translateX(-50%);
+    top: 28px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #555;
+    background: #121212;
+    z-index: 1;
+}
+
+.time-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.time-header h4 {
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+.time-header .date {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+}
+
+.sub-title {
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.desc {
+    color: var(--text-sub);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 1024px) {
+    .about-content {
+        flex-direction: column;
+        /* 세로로 쌓기 */
+    }
+
+    .tech-grid {
+        grid-template-columns: 1fr;
+        /* 1줄로 변경 */
+    }
+}
+
+/* ==========================================================================
+   Projects Section
+   ========================================================================== */
+.projects-section {
+    padding: 5rem 10%;
+}
+
+.projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+}
+
+.projects-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.projects-header p {
+    color: var(--text-sub);
+}
+
+.github-link {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.github-link:hover {
+    color: var(--accent);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.project-card {
+    background: #111;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #222;
+}
+
+.project-info {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.engine-tag {
+    font-size: 0.75rem;
+    color: #888;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.project-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+
+.project-desc {
+    color: var(--text-sub);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    flex: 1;
+    line-height: 1.5;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-tags span {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    color: #aaa;
+    border-radius: 4px;
+}
+
+.skill-tags .plus-tag {
+    background: #222;
+    color: #fff;
+}
+
+/* ==========================================================================
+   Contact Section
+   ========================================================================== */
+.contact-section {
+    padding: 5rem 10% 8rem 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-card {
+    background: #151515;
+    border-radius: 16px;
+    padding: 60px;
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+}
+
+.contact-card h2 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.contact-subtitle {
+    color: var(--text-sub);
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+    line-height: 1.6;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.contact-item {
+    background: #0a0a0a;
+    border: 1px solid var(--border);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+}
+
+.contact-icon {
+    width: 48px;
+    height: 48px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #888;
+}
+
+.contact-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.contact-label {
+    font-size: 0.75rem;
+    color: #666;
+    letter-spacing: 1px;
+}
+
+.contact-text strong {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.btn-centered {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid, .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .projects-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+}
+
+/* ==========================================================================
+   Project Hover Effects
+   ========================================================================== */
+.project-card {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: #444;
+}
+
+.project-img {
+    position: relative;
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.btn-view {
+    background: #fff;
+    color: #000;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transform: translateY(10px);
+    transition: transform 0.3s;
+}
+
+.project-card:hover .btn-view {
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   Project Modal Structure
+   ========================================================================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal.active {
+    display: flex;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: #0f0f0f;
+    width: 100%;
+    max-width: 1200px;
+    max-height: 90vh;
+    border-radius: 8px;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid #222;
+}
+
+.modal-header h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.close-modal {
+    font-size: 1.2rem;
+    color: #888;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s;
+}
+
+.close-modal:hover {
+    color: #fff;
+}
+
+.modal-body {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+}
+
+/* Modal Split Layout */
+.modal-left {
+    flex: 1.4;
+    min-width: 300px;
+    background: #000;
+}
+
+.modal-right {
+    flex: 1;
+    min-width: 300px;
+    padding: 30px;
+    border-left: 1px solid #222;
+}
+
+/* Modal Graphics */
+.modal-main-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-size: cover;
+    background-position: center;
+}
+
+.modal-thumbnails {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    background: #050505;
+}
+
+.thumb-img {
+    width: 100px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid transparent;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.2s;
+}
+
+.thumb-img:hover, .thumb-img.active {
+    opacity: 1;
+    border-color: #fff;
+}
+
+/* Modal Details */
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.modal-actions a {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-secondary {
+    background: #1a1a1a;
+    color: #fff;
+    border: 1px solid #333;
+}
+
+.btn-secondary:hover {
+    background: #222;
+}
+
+.modal-section {
+    margin-bottom: 30px;
+}
+
+.modal-section h3 {
+    font-size: 0.8rem;
+    color: #888;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+}
+
+#modalDesc {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+#modalFeatures {
+    list-style: none;
+    padding: 0;
+}
+
+#modalFeatures li {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 12px;
+    color: #bbb;
+    font-size: 0.9rem;
+}
+
+#modalFeatures li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .modal-body {
+        flex-direction: column;
+    }
+    .modal-right {
+        border-left: none;
+        border-top: 1px solid #222;
+    }
+}
