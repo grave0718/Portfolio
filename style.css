@@ -14,6 +14,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-y: scroll;
 }
 
 * {
@@ -40,13 +41,22 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 5%;
+    padding: 1rem 5%; /* 원래 수준의 슬림한 상단바 굵기를 유지합니다 */
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+nav {
+    margin-left: auto; /* 로고가 공중에 떠 있기 때문에, 메뉴들이 오른쪽 끝에 붙도록 밀어줍니다 */
+}
+
 .logo {
-    font-size: 1.5rem;
-    font-weight: 800;
+    position: absolute;
+    top: 0px; /* 헤더 윗부분부터 시작 */
+    left: 5%;
+    height: 50px; /* 로고 크기만 단독으로 큼직하게! 숫자를 조절해보세요 */
+    width: auto;
+    object-fit: contain;
+    z-index: 1001; /* 다른 요소들보다 항상 위에 뜨도록 설정 */
 }
 
 nav ul {
@@ -388,33 +398,88 @@ h3 {
     color: var(--accent);
 }
 
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 1px solid var(--border);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+    font-size: 1.2rem;
+}
+
+.carousel-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+.prev-btn {
+    left: -25px;
+}
+
+.next-btn {
+    right: -25px;
+}
+
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    display: flex;
+    gap: 32px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+/* Custom Scrollbar for Carousel */
+.projects-grid::-webkit-scrollbar {
+    height: 8px;
+}
+.projects-grid::-webkit-scrollbar-track {
+    background: #111; 
+    border-radius: 4px;
+}
+.projects-grid::-webkit-scrollbar-thumb {
+    background: #444; 
+    border-radius: 4px;
 }
 
 .project-card {
+    flex: 0 0 calc(90% - 16px);
+    max-width: 800px;
+    scroll-snap-align: center;
     background: #111;
     border: 1px solid var(--border);
-    border-radius: 4px;
+    border-radius: 8px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 
 .project-img {
-    height: 200px;
+    height: 500px;
     background-size: cover;
     background-position: center;
-    border-bottom: 1px solid #222;
 }
 
 .project-info {
-    padding: 24px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    display: none;
 }
 
 .engine-tag {
@@ -542,13 +607,13 @@ h3 {
 }
 
 @media (max-width: 1024px) {
-    .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .project-card {
+        flex: 0 0 calc(100% - 16px);
     }
 }
 
 @media (max-width: 768px) {
-    .projects-grid, .contact-grid {
+    .contact-grid {
         grid-template-columns: 1fr;
     }
     

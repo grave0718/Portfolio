@@ -11,45 +11,17 @@
 
 <body>
     <header>
-        <div class="logo">K_Q_1</div>
+        <img class="logo" src="./Images/Projects/Name_Monogram.png" alt="K_Q_1">
         <nav>
             <ul>
-                <li><a href="#">홈</a></li>
+                <li><a href="index.html" style="color: var(--text-main);">프로젝트</a></li>
                 <li><a href="about.html">소개</a></li>
-                <li><a href="#projects">프로젝트</a></li>
-                <li><a href="#contact">연락처</a></li>
+                <li><a href="contact.html">연락처</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="hero">
-        <div class="hero-text">
-            <span class="badge">Student Developer & Game Enthusiast</span>
-            <h1>Building Worlds in <br><span>Virtual Reality</span></h1>
-            <p> <strong>김규원</strong>입니다.<br>평소 VR게임을 즐기며 컨트롤러의 한계와 멀미로 인한 접근성에 대해 많은 고민을 했었습니다.
-                <br>VR을 처음 접하는, 잘 해보지 못한 사람들이 즐기기 위해 필요한 간단한 조작법을 찾고싶습니다.
-            </p>
 
-            <div class="cta-group">
-                <!-- 나중에 추가
-                <button class="btn-primary">작업물 보기 &rarr;</button>
-                <div class="social-links">
-                    <i class="fab fa-github"></i>
-                    <i class="fab fa-youtube"></i>
-                    <i class="fab fa-twitter"></i>
-                </div>
-                -->
-            </div>
-        </div>
-
-        <div class="hero-visual">
-            <div class="image-card" onclick="this.classList.toggle('swapped')">
-                <div class="card-bg-front"></div>
-                <div class="card-bg-back"></div>
-                <div class="badge-unity">김규원</div>
-            </div>
-        </div>
-    </main>
 
     <section id="projects" class="projects-section">
         <div class="projects-header">
@@ -57,10 +29,12 @@
                 <h2>Projects</h2>
                 <p>상상을 현실로 구현한 결과물입니다.</p>
             </div>
-            <a href="#" class="github-link">GitHub 방문하기 <i class="fas fa-external-link-alt"></i></a>
+            <!-- <a href="#" target="_blank" class="github-link">개발 블로그 보러가기 <i class="fas fa-blog"></i></a> -->
         </div>
 
-        <div class="projects-grid">
+        <div class="carousel-container">
+            <button class="carousel-btn prev-btn" aria-label="Previous Project"><i class="fas fa-chevron-left"></i></button>
+            <div class="projects-grid" id="projectsGrid">
             <!-- Project 1 -->
             <div class="project-card" onclick="openModal('abyss')">
                 <div class="project-img"
@@ -122,35 +96,30 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section id="contact" class="contact-section">
-        <div class="contact-card">
-            <h2>Get In Touch</h2>
-            <p class="contact-subtitle"></p>
-
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="far fa-envelope"></i></div>
-                    <div class="contact-text">
-                        <span class="contact-label">EMAIL</span>
-                        <strong>grave0718@gmail.com</strong>
+            <!-- Project 4: Graduation -->
+            <div class="project-card" onclick="openModal('graduation')">
+                <div class="project-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=400');">
+                    <div class="project-overlay">
+                        <span class="btn-view"><i class="fas fa-expand-arrows-alt"></i> 상세보기</span>
                     </div>
                 </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <div class="contact-text">
-                        <span class="contact-label">UNIVERSITY</span>
-                        <strong>Sangmyung University, CheonAn</strong>
+                <div class="project-info">
+                    <span class="engine-tag">>_ TBA</span>
+                    <h3>졸업작품 (준비중)</h3>
+                    <p class="project-desc">현재 진행 중인 졸업작품 프로젝트입니다.</p>
+                    <div class="skill-tags">
+                        <span>TBA</span>
                     </div>
                 </div>
             </div>
-
-            <button class="btn-primary btn-centered">메일 보내기 <i class="far fa-paper-plane"></i></button>
+            </div>
+            <button class="carousel-btn next-btn" aria-label="Next Project"><i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
+
+
 
     <!-- Project Modal -->
     <div id="projectModal" class="modal">
@@ -172,8 +141,7 @@
                     <div class="modal-actions">
                         <a href="#" class="btn-primary" id="modalPlayBtn">Play Demo <i
                                 class="fas fa-external-link-square-alt"></i></a>
-                        <a href="#" class="btn-secondary" id="modalGithubBtn"><i class="fab fa-github"></i> Source
-                            Code</a>
+                        <a href="#" target="_blank" class="btn-secondary" id="modalBlogBtn"><i class="fas fa-blog"></i> 개발 과정 보기</a>
                     </div>
 
                     <div class="modal-section">

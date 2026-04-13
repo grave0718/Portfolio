@@ -16,7 +16,7 @@ const projectsData = {
         ],
         techStack: ['Unity', 'C#', 'Oculus SDK', 'Shader Graph'],
         playLink: '#',
-        githubLink: '#'
+        blogLink: '#'
     },
     'lab': {
         title: 'Dread Rush',
@@ -34,7 +34,7 @@ const projectsData = {
         ],
         techStack: ['Unreal Engine 5', 'C++', 'Steamworks API'],
         playLink: '#',
-        githubLink: '#'
+        blogLink: '#'
     },
     'campus': {
         title: '환영(幻影)',
@@ -51,7 +51,22 @@ const projectsData = {
         ],
         techStack: ['Unity', 'AR Foundation', 'Vuforia', 'C#'],
         playLink: '#',
-        githubLink: '#'
+        blogLink: '#'
+    },
+    'graduation': {
+        title: '졸업작품 (준비중)',
+        mainImg: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800',
+        thumbnails: [
+            'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=200'
+        ],
+        desc: '현재 진행 혹은 구상 중인 졸업작품 프로젝트입니다. 자세한 기획과 개발 과정은 추후 업데이트될 예정입니다.',
+        features: [
+            '세부 기능 기획 중',
+            '기술 스택 선정 중'
+        ],
+        techStack: ['TBA'],
+        playLink: '#',
+        blogLink: '#'
     }
 };
 
@@ -85,7 +100,7 @@ function openModal(projectId) {
     
     // Set Links
     document.getElementById('modalPlayBtn').href = data.playLink;
-    document.getElementById('modalGithubBtn').href = data.githubLink;
+    document.getElementById('modalBlogBtn').href = data.blogLink;
     
     // Set Images
     const mainImgEl = document.getElementById('modalMainImg');
@@ -125,5 +140,24 @@ function closeModal() {
 modal.addEventListener('click', function(e) {
     if (e.target === modal) {
         closeModal();
+    }
+});
+
+// Carousel Scroll Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('projectsGrid');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    if (grid && prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+            const cardWidth = grid.querySelector('.project-card').offsetWidth + 32; // Include gap
+            grid.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const cardWidth = grid.querySelector('.project-card').offsetWidth + 32; // Include gap
+            grid.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        });
     }
 });

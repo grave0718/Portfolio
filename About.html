@@ -76,18 +76,46 @@
 
 <body>
     <header>
-        <div class="logo">K_Q_1</div>
+        <img class="logo" src="./Images/Projects/Name_Monogram.png" alt="K_Q_1">
         <nav>
             <ul>
-                <li><a href="index.html">홈</a></li>
+                <li><a href="index.html">프로젝트</a></li>
                 <li><a href="about.html" style="color: var(--text-main);">소개</a></li>
-                <li><a href="index.html#projects">프로젝트</a></li>
-                <li><a href="index.html#contact">연락처</a></li>
+                <li><a href="contact.html">연락처</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
+        <section class="hero">
+            <div class="hero-text">
+                <span class="badge">Student Developer & Game Enthusiast</span>
+                <h1>Building Worlds in <br><span>Virtual Reality</span></h1>
+                <p> <strong>김규원</strong>입니다.<br>평소 VR게임을 즐기며 컨트롤러의 한계와 멀미로 인한 접근성에 대해 많은 고민을 했었습니다.
+                    <br>VR을 처음 접하는, 잘 해보지 못한 사람들이 즐기기 위해 필요한 간단한 조작법을 찾고싶습니다.
+                </p>
+
+                <div class="cta-group">
+                    <!-- 나중에 추가
+                    <button class="btn-primary">작업물 보기 &rarr;</button>
+                    <div class="social-links">
+                        <i class="fab fa-github"></i>
+                        <i class="fab fa-youtube"></i>
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    -->
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="image-card" onclick="this.classList.toggle('swapped')">
+                    <div class="card-bg-front"></div>
+                    <div class="card-bg-back"></div>
+                    <div class="badge-unity">김규원</div>
+                </div>
+            </div>
+        </section>
+
         <section id="about-me" class="about-me">
             <div class="section-title">
                 <h2>About Me</h2>
@@ -118,7 +146,7 @@
 
                     <h3>— Background</h3>
                     <div class="background-box">
-                        <p>상명대 ARVR미디어디자인학부에 재학 중인 게임 개발자입니다. 컨트롤러 없이 유저가 직접 경험하는 콘텐츠에 관심이 있습니다.</p>
+                        <p>상명대 ARVR미디어디자인학부에 재학 중인 게임 개발자입니다. VR 개발을 희망해 꾸준히 공부하고 있습니다.</p>
                     </div>
                 </div>
 
@@ -131,7 +159,7 @@
                                 <span class="date">2021 - Present</span>
                             </div>
                             <p class="sub-title"><i class="fas fa-graduation-cap"></i> ARVR미디어디자인 학부생</p>
-                            <p class="desc">AR,VR 게임 개발, 미디어 아트 수강 </p>
+                            <p class="desc">AR,VR 게임 개발, 미디어 아트 강의 수료 </p>
                         </div>
 
                         <div class="timeline-item">
@@ -139,13 +167,13 @@
                                 <h4>[OVERDARE 커뮤니티 공모전]</h4>
                                 <span class="date">2025. 11</span>
                             </div>
-                            <p class="sub-title"><i class="fas fa-trophy"></i> 2위 수상</p>
+                            <p class="sub-title"><i class="fas fa-trophy"></i> 2위 입상</p>
                             <p class="desc">OVERDARE 게임엔진을 사용한 OBBY 게임 개발</p>
                         </div>
 
                         <div class="timeline-item">
                             <div class="time-header">
-                                <h4>[HCI 디자인학회 뉴 챌린지 상]</h4>
+                                <h4>[HCI 디자인학회 장려상 입상]</h4>
                                 <span class="date">2026. 01</span>
                             </div>
                             <p class="sub-title"><i class="fas fa-award"></i> 뉴 챌린지상 수상</p>
@@ -173,33 +201,33 @@
                             <ul>
                                 <li>HCI 디자인학회 뉴 챌린지상 수상</li>
                                 <li>아두이노(Arduino)와 터치디자이너를 연동한 인터랙티브 하드웨어 시스템 구축</li>
-                                <li>착시와 시간의 비가역성을 주제로 한 작품 '환영(幻影)' 전시 참여</li>
+                                <li>착각과 시간의 비가역성을 주제로 한 작품 '환영(幻影)' 전시 참여</li>
                             </ul>
                         </div>
                     </div>
                     <div class="resume-item">
                         <div class="resume-item-header">
                             <div class="resume-item-title">OVERDARE 커뮤니티 공모전 출품작 개발</div>
-                            <div class="resume-item-date">2025.11</div>
+                            <div class="resume-item-date">2025.10</div>
                         </div>
                         <div class="resume-item-desc">
                             <ul>
                                 <li>공모전 2위 수상</li>
                                 <li>OVERDARE 엔진을 사용하여 OBBY 게임 기획 및 개발 주도</li>
-                                <li>제한된 시간 내 플레이어블 콘텐츠 완성 및 제출</li>
+                                <li>제한된 시간 내 OBBY 게임 LUAU언어를 사용한 코딩 담당</li>
                             </ul>
                         </div>
                     </div>
                     <div class="resume-item">
                         <div class="resume-item-header">
                             <div class="resume-item-title">핸드트래킹 기반 VR 로봇 쿠키 드로잉 (Draw It) 개발</div>
-                            <div class="resume-item-date">진행연도 기입 필요</div>
+                            <div class="resume-item-date">2025.12</div>
                         </div>
                         <div class="resume-item-desc">
                             <ul>
                                 <li>부산 벡스코 전시 진행</li>
                                 <li>Meta All in One SDK를 활용하여 컨트롤러 없이 손만으로 조작하는 VR 핸드트래킹 드로잉 구현</li>
-                                <li>VR 가상 공간에서의 드로잉 좌표를 로봇 팔에 연동시키는 물리 구현 매핑</li>
+                                <li>VR 가상 공간에서의 드로잉으로 Shader Graph와 연동하는 작업 진행</li>
                             </ul>
                         </div>
                     </div>
@@ -273,32 +301,7 @@
         </section>
     </main>
 
-    <section id="contact" class="contact-section">
-        <div class="contact-card">
-            <h2>Get In Touch</h2>
-            <p class="contact-subtitle"></p>
 
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="far fa-envelope"></i></div>
-                    <div class="contact-text">
-                        <span class="contact-label">EMAIL</span>
-                        <strong>grave0718@gmail.com</strong>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <div class="contact-text">
-                        <span class="contact-label">UNIVERSITY</span>
-                        <strong>Sangmyung University, CheonAn</strong>
-                    </div>
-                </div>
-            </div>
-
-            <button class="btn-primary btn-centered">메일 보내기 <i class="far fa-paper-plane"></i></button>
-        </div>
-    </section>
 
     <script src="main.js"></script>
 </body>
