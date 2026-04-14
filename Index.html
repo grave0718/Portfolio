@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>기록보관소</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="./Images/Projects/Name_Monogram.png" alt="K_Q_1">
+        <nav>
+            <ul>
+                <li><a href="Index.html" style="color: var(--text-main);">프로젝트</a></li>
+                <li><a href="About.html">소개</a></li>
+                <li><a href="Contact.html">연락처</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <section id="projects" class="projects-section">
+        <div class="projects-header">
+            <div class="title-group">
+                <h2>Projects</h2>
+                <p>상상을 현실로 구현한 결과물입니다.</p>
+            </div>
+            <!-- <a href="#" target="_blank" class="github-link">개발 블로그 보러가기 <i class="fas fa-blog"></i></a> -->
+        </div>
+
+        <div class="carousel-container">
+            <button class="carousel-btn prev-btn" aria-label="Previous Project"><i class="fas fa-chevron-left"></i></button>
+            <div class="projects-grid" id="projectsGrid">
+            <!-- Project 1 -->
+            <div class="project-card" onclick="openModal('abyss')">
+                <div class="project-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&q=80&w=400');">
+                    <div class="project-overlay">
+                        <span class="btn-view"><i class="fas fa-expand-arrows-alt"></i> 상세보기</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="engine-tag">>_ UNITY</span>
+                    <h3>Draw It</h3>
+                    <p class="project-desc">가상현실에서 핸드트래킹을 통해 그림을 그린 후 로봇팔을 통해 실제 쿠키 위에 그림을 그려주는 게임입니다. 부산 벡스코에서 전시하였습니다.
+                    </p>
+                    <div class="skill-tags">
+                        <span>UNITY</span>
+                        <span>C#</span>
+                        <span>Meta All in One SDK</span>
+                        <span class="plus-tag">+1</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card" onclick="openModal('lab')">
+                <div class="project-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=400');">
+                    <div class="project-overlay">
+                        <span class="btn-view"><i class="fas fa-expand-arrows-alt"></i> 상세보기</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="engine-tag">>_ UNITY</span>
+                    <h3>Dread Rush</h3>
+                    <p class="project-desc">VR로 개발한 좀비 슈팅게임입니다. 컨트롤러에 총모양 서드파티손잡이를 달아 몰입도를 높였습니다.</p>
+                    <div class="skill-tags">
+                        <span>UNITY</span>
+                        <span>C#</span>
+                        <span>STEAMWORKS API</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card" onclick="openModal('campus')">
+                <div class="project-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=400');">
+                    <div class="project-overlay">
+                        <span class="btn-view"><i class="fas fa-expand-arrows-alt"></i> 상세보기</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="engine-tag">>_ UNITY</span>
+                    <h3>환영(幻影)</h3>
+                    <p class="project-desc">아두이노와 터치디자이너를 사용해 제작한 인터랙티브 미디어 아트로, 시간의 비가역성과 착각을 담아내고자 하였습니다.</p>
+                    <div class="skill-tags">
+                        <span>UNITY</span>
+                        <span>C#</span>
+                        <span>Meta All in One SDK</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Graduation -->
+            <div class="project-card" onclick="openModal('graduation')">
+                <div class="project-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=400');">
+                    <div class="project-overlay">
+                        <span class="btn-view"><i class="fas fa-expand-arrows-alt"></i> 상세보기</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="engine-tag">>_ TBA</span>
+                    <h3>졸업작품 (준비중)</h3>
+                    <p class="project-desc">현재 진행 중인 졸업작품 프로젝트입니다.</p>
+                    <div class="skill-tags">
+                        <span>TBA</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <button class="carousel-btn next-btn" aria-label="Next Project"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Project Title</h2>
+                <span class="close-modal" onclick="closeModal()"><i class="fas fa-times"></i></span>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-left">
+                    <div class="modal-main-img" id="modalMainImg"></div>
+                    <div class="modal-thumbnails" id="modalThumbnails">
+                        <!-- Thumbnails will be injected here -->
+                    </div>
+                </div>
+
+                <div class="modal-right">
+                    <div class="modal-actions">
+                        <a href="#" class="btn-primary" id="modalPlayBtn">Play Demo <i
+                                class="fas fa-external-link-square-alt"></i></a>
+                        <a href="#" target="_blank" class="btn-secondary" id="modalBlogBtn"><i class="fas fa-blog"></i> 개발 과정 보기</a>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>ABOUT PROJECT</h3>
+                        <p id="modalDesc">프로젝트 설명 내용이 들어갑니다.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>KEY FEATURES</h3>
+                        <ul id="modalFeatures">
+                            <li>핵심 기능 1</li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>TECH STACK</h3>
+                        <div class="skill-tags" id="modalTechStack">
+                            <span>Unity</span><span>C#</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
