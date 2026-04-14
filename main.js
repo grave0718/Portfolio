@@ -2,12 +2,12 @@ const projectsData = {
     'abyss': {
         title: 'Draw It',
         youtubeId: 'z19XPYQDrIM',
-        mainImg: './Images/Projects/DrawIt/Shot1.png',
+        mainImg: './Images/Projects/DrawIt/Shot1.webp',
         thumbnails: [
-            './Images/Projects/DrawIt/Shot1.png',
-            './Images/Projects/DrawIt/PlayShot1.png',
-            './Images/Projects/DrawIt/PlayShot2.png',
-            './Images/Projects/DrawIt/PlayShot3.png'
+            './Images/Projects/DrawIt/Shot1.webp',
+            './Images/Projects/DrawIt/PlayShot1.webp',
+            './Images/Projects/DrawIt/PlayShot2.webp',
+            './Images/Projects/DrawIt/PlayShot3.webp'
         ],
         desc: '가상현실에서 핸드트래킹을 통해 그림을 그린 후 로봇팔을 통해 실제 쿠키 위에 그림을 그려주는 게임입니다. 부산 벡스코에서 전시하였습니다.',
         features: [
@@ -21,12 +21,12 @@ const projectsData = {
     },
     'lab': {
         title: 'Dread Rush',
-        mainImg: './Images/Projects/DreadRush/DreadRush.png',
+        mainImg: './Images/Projects/DreadRush/DreadRush.webp',
         thumbnails: [
-            './Images/Projects/DreadRush/DreadRush.png',
-            './Images/Projects/DreadRush/PlayShot1.png',
-            './Images/Projects/DreadRush/PlayShot2.png',
-            './Images/Projects/DreadRush/PlayShot3.png'
+            './Images/Projects/DreadRush/DreadRush.webp',
+            './Images/Projects/DreadRush/PlayShot1.webp',
+            './Images/Projects/DreadRush/PlayShot2.webp',
+            './Images/Projects/DreadRush/PlayShot3.webp'
         ],
         desc: 'VR로 개발한 좀비 슈팅게임입니다. 컨트롤러에 총모양 서드파티손잡이를 달아 몰입도를 높였습니다.',
         features: [
@@ -43,11 +43,11 @@ const projectsData = {
         youtubeId: 'sJhNLfsNqVc',
         mainImg: './Images/Projects/Illusion/Illusion0.png',
         thumbnails: [
-            '/Images/Projects/Illusion/Illusion0.png',
-            '/Images/Projects/Illusion/IllusionPanel.png',
-            '/Images/Projects/Illusion/Illusion1.png',
-            '/Images/Projects/Illusion/Illusion2.jpg',
-            '/Images/Projects/Illusion/Illusion3.jpg'
+            '/Images/Projects/Illusion/Illusion0.webp',
+            '/Images/Projects/Illusion/IllusionPanel.webp',
+            '/Images/Projects/Illusion/Illusion1.webp',
+            '/Images/Projects/Illusion/Illusion2.webp',
+            '/Images/Projects/Illusion/Illusion3.webp'
         ],
         desc: '착각으로 인한 시간의 비가역성을 다룬 인터랙티브 미디어 아트 작품입니다. ',
         features: [
@@ -61,14 +61,14 @@ const projectsData = {
     },
     'factory': {
         title: 'Factory Runner',
-        mainImg: './Images/Projects/FactoryRunner/OBBY.png',
+        mainImg: './Images/Projects/FactoryRunner/OBBY.webp',
         thumbnails: [
-            './Images/Projects/FactoryRunner/OBBY.png',
-            './Images/Projects/FactoryRunner/FactoryRunner1.jpg',
-            './Images/Projects/FactoryRunner/FactoryRunner2.png',
-            './Images/Projects/FactoryRunner/FactoryRunner3.jpg',
-            './Images/Projects/FactoryRunner/FactoryRunner4.jpg',
-            './Images/Projects/FactoryRunner/FactoryRunner5.jpg'
+            './Images/Projects/FactoryRunner/OBBY.webp',
+            './Images/Projects/FactoryRunner/FactoryRunner1.webp',
+            './Images/Projects/FactoryRunner/FactoryRunner2.webp',
+            './Images/Projects/FactoryRunner/FactoryRunner3.webp',
+            './Images/Projects/FactoryRunner/FactoryRunner4.webp',
+            './Images/Projects/FactoryRunner/FactoryRunner5.webp'
         ],
         desc: '공장을 배경으로 장애물을 돌파하며 끝까지 달리는 러닝 액션 게임입니다. 다양한 기믹과 속도감이 특징입니다.',
         features: [

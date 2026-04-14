@@ -630,6 +630,8 @@ h3 {
 .project-card {
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .project-card:hover {
@@ -678,7 +680,10 @@ h3 {
    Project Modal Structure
    ========================================================================== */
 .modal {
-    display: none;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
     position: fixed;
     top: 0; left: 0; 
     width: 100%; height: 100%;
@@ -687,11 +692,13 @@ h3 {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    transition: opacity 0.2s, visibility 0.2s;
 }
 
 .modal.active {
-    display: flex;
-    animation: fadeIn 0.3s;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 @keyframes fadeIn {
@@ -869,7 +876,10 @@ h3 {
    Full Screen Image Viewer
    ========================================================================== */
 .fullscreen-viewer {
-    display: none;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
     position: fixed;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
@@ -878,11 +888,13 @@ h3 {
     justify-content: center;
     align-items: center;
     cursor: zoom-out;
-    animation: fadeIn 0.3s;
+    transition: opacity 0.2s, visibility 0.2s;
 }
 
 .fullscreen-viewer.active {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .fullscreen-viewer img {
@@ -891,7 +903,6 @@ h3 {
     object-fit: contain;
     border-radius: 8px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    transition: max-width 0.3s, max-height 0.3s, margin 0.3s;
 }
 
 .fullscreen-viewer.zoomed-container {
