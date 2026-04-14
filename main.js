@@ -76,7 +76,7 @@ const projectsData = {
             '다양한 장애물 및 점프 기믹 적용',
             '시간감소 및 재시작 시 초기화 기믹 구현'
         ],
-        techStack: ['Unity', 'C#'],
+        techStack: ['Overdare', 'Luau'],
         playLink: '#',
         blogLink: '#'
     },
