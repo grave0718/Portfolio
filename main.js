@@ -137,7 +137,7 @@ function openModal(projectId) {
     thumbsEl.innerHTML = '';
 
     if (data.youtubeId) {
-        mainImgEl.style.backgroundImage = 'none';
+        // mainImgEl.style.backgroundImage = 'none';
         mainImgEl.style.cursor = 'default';
         mainImgEl.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${data.youtubeId}?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
         
