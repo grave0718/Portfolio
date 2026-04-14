@@ -51,7 +51,7 @@ nav {
 
 .logo {
     position: absolute;
-    top: 0px; /* 헤더 윗부분부터 시작 */
+    top: 5px; /* 위쪽 여백을 주어 상하 간격의 밸런스를 맞춤 */
     left: 5%;
     height: 50px; /* 로고 크기만 단독으로 큼직하게! 숫자를 조절해보세요 */
     width: auto;
@@ -863,4 +863,49 @@ h3 {
         border-left: none;
         border-top: 1px solid #222;
     }
+}
+
+/* ==========================================================================
+   Full Screen Image Viewer
+   ========================================================================== */
+.fullscreen-viewer {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    animation: fadeIn 0.3s;
+}
+
+.fullscreen-viewer.active {
+    display: flex;
+}
+
+.fullscreen-viewer img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    transition: max-width 0.3s, max-height 0.3s, margin 0.3s;
+}
+
+.fullscreen-viewer.zoomed-container {
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 50px 0;
+}
+
+.fullscreen-viewer.zoomed-container img {
+    width: 90vw;
+    max-width: 1200px;
+    height: auto;
+    max-height: none;
+    margin: 0 auto;
 }

@@ -1,55 +1,82 @@
 const projectsData = {
     'abyss': {
         title: 'Draw It',
-        mainImg: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&q=80&w=800',
+        youtubeId: 'z19XPYQDrIM',
+        mainImg: './Images/Projects/DrawIt/Shot1.png',
         thumbnails: [
-            'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&q=80&w=200',
-            'https://images.unsplash.com/photo-1495908333425-29a1e0918c5f?auto=format&fit=crop&q=80&w=200',
-            'https://images.unsplash.com/photo-1505322022379-7c3353ee6291?auto=format&fit=crop&q=80&w=200',
-            'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=200'
+            './Images/Projects/DrawIt/Shot1.png',
+            './Images/Projects/DrawIt/PlayShot1.png',
+            './Images/Projects/DrawIt/PlayShot2.png',
+            './Images/Projects/DrawIt/PlayShot3.png'
         ],
-        desc: '심해를 탐험하는 VR 생존 어드벤처 게임입니다. Unity URP를 사용하여 수중 포스트 프로세싱 효과를 구현하고, 핸드 트래킹을 통한 상호작용을 최적화했습니다.',
+        desc: '가상현실에서 핸드트래킹을 통해 그림을 그린 후 로봇팔을 통해 실제 쿠키 위에 그림을 그려주는 게임입니다. 부산 벡스코에서 전시하였습니다.',
         features: [
-            'URP 기반 수중 렌더링 및 Caustics 효과 구현',
-            '핸드 트래킹을 이용한 직관적인 아이템 상호작용',
-            '동적 난이도 조절 시스템 (DDA) 적용'
+            '로봇팔과 연계한 체험형 VR 게임 개발',
+            '핸드 트래킹을 이용한 직관적인 모래 상호작용',
+            '렌더 텍스쳐 저장으로 유저의 경험 영구 저장'
         ],
-        techStack: ['Unity', 'C#', 'Oculus SDK', 'Shader Graph'],
+        techStack: ['Unity', 'C#', 'Meta SDK', 'Shader Graph'],
         playLink: '#',
         blogLink: '#'
     },
     'lab': {
         title: 'Dread Rush',
-        mainImg: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800',
+        mainImg: './Images/Projects/DreadRush/DreadRush.png',
         thumbnails: [
-            'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=200',
-            'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=200',
-            'https://images.unsplash.com/photo-1481481322814-3d0d8be5ff71?auto=format&fit=crop&q=80&w=200'
+            './Images/Projects/DreadRush/DreadRush.png',
+            './Images/Projects/DreadRush/PlayShot1.png',
+            './Images/Projects/DreadRush/PlayShot2.png',
+            './Images/Projects/DreadRush/PlayShot3.png'
         ],
-        desc: 'Unreal Engine 5의 Lumen을 활용한 고퀄리티 그래픽의 방탈출 게임입니다. 물리 기반 퍼즐과 멀티플레이 기능을 C++로 구현했습니다.',
+        desc: 'VR로 개발한 좀비 슈팅게임입니다. 컨트롤러에 총모양 서드파티손잡이를 달아 몰입도를 높였습니다.',
         features: [
-            'Lumen을 활용한 실시간 글로벌 일루미네이션',
-            '물리기반 퍼즐 기믹 구현',
-            'Steamworks API를 이용한 멀티플레이 연동'
+            '컨트롤러 진동을 통한 햅틱 구현',
+            '버튼을 통한 전체 몬스터 제거 구현(폭탄)',
+            '목숨 제어를 통한 게임오버 구현'
         ],
-        techStack: ['Unreal Engine 5', 'C++', 'Steamworks API'],
+        techStack:['Unity', 'C#', 'Meta SDK'],
         playLink: '#',
         blogLink: '#'
     },
     'campus': {
         title: '환영(幻影)',
-        mainImg: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=800',
+        youtubeId: 'sJhNLfsNqVc',
+        mainImg: './Images/Projects/Illusion/Illusion0.png',
         thumbnails: [
-            'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=200',
-            'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=200'
+            '/Images/Projects/Illusion/Illusion0.png',
+            '/Images/Projects/Illusion/IllusionPanel.png',
+            '/Images/Projects/Illusion/Illusion1.png',
+            '/Images/Projects/Illusion/Illusion2.jpg',
+            '/Images/Projects/Illusion/Illusion3.jpg'
         ],
-        desc: '신입생을 위한 교내 증강현실 가이드 앱입니다. GPS와 이미지 마커를 결합하여 건물 정보와 길 안내를 제공합니다.',
+        desc: '착각으로 인한 시간의 비가역성을 다룬 인터랙티브 미디어 아트 작품입니다. ',
         features: [
-            'Vuforia를 활용한 이미지 마커 인식 및 콘텐츠 증강',
-            'GPS 기반의 최단거리 길 안내 알고리즘 구현',
-            '건물별 혼잡도 실시간 체크 기능'
+            '스트로보 효과를 사용한 시각적 착시',
+            '푸시버튼을 통한 LED 점멸 주기 제어',
+            '미디어 아트로 나타낸 시간의 비가역성'
         ],
-        techStack: ['Unity', 'AR Foundation', 'Vuforia', 'C#'],
+        techStack: ['Arduino', 'TouchDesigner'],
+        playLink: '#',
+        blogLink: '#'
+    },
+    'factory': {
+        title: 'Factory Runner',
+        mainImg: './Images/Projects/FactoryRunner/OBBY.png',
+        thumbnails: [
+            './Images/Projects/FactoryRunner/OBBY.png',
+            './Images/Projects/FactoryRunner/FactoryRunner1.jpg',
+            './Images/Projects/FactoryRunner/FactoryRunner2.png',
+            './Images/Projects/FactoryRunner/FactoryRunner3.jpg',
+            './Images/Projects/FactoryRunner/FactoryRunner4.jpg',
+            './Images/Projects/FactoryRunner/FactoryRunner5.jpg'
+        ],
+        desc: '공장을 배경으로 장애물을 돌파하며 끝까지 달리는 러닝 액션 게임입니다. 다양한 기믹과 속도감이 특징입니다.',
+        features: [
+            '랜덤 맵 생성 알고리즘 및 쿼터뷰 구현',
+            '다양한 장애물 및 점프 기믹 적용',
+            '시간감소 및 재시작 시 초기화 기믹 구현'
+        ],
+        techStack: ['Unity', 'C#'],
         playLink: '#',
         blogLink: '#'
     },
@@ -99,19 +126,50 @@ function openModal(projectId) {
     });
     
     // Set Links
-    document.getElementById('modalPlayBtn').href = data.playLink;
     document.getElementById('modalBlogBtn').href = data.blogLink;
     
     // Set Images
     const mainImgEl = document.getElementById('modalMainImg');
-    mainImgEl.style.backgroundImage = `url('${data.mainImg}')`;
-    
     const thumbsEl = document.getElementById('modalThumbnails');
+    
+    // Clear any previous iframe and thumbnails
+    mainImgEl.innerHTML = '';
     thumbsEl.innerHTML = '';
+
+    if (data.youtubeId) {
+        mainImgEl.style.backgroundImage = 'none';
+        mainImgEl.style.cursor = 'default';
+        mainImgEl.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${data.youtubeId}?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        
+        // Add a special video thumbnail at the beginning
+        const vidThumb = document.createElement('div');
+        vidThumb.className = 'thumb-img active';
+        vidThumb.style.backgroundImage = `url('https://img.youtube.com/vi/${data.youtubeId}/mqdefault.jpg')`;
+        vidThumb.style.position = 'relative';
+        vidThumb.innerHTML = '<i class="fab fa-youtube" style="color:#ff0000; font-size: 2rem; position: absolute; top:50%; left:50%; transform:translate(-50%, -50%); filter: drop-shadow(0px 0px 4px rgba(0,0,0,0.8));"></i>';
+        
+        vidThumb.onclick = function() {
+            document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('active'));
+            this.classList.add('active');
+            mainImgEl.style.backgroundImage = 'none';
+            mainImgEl.style.cursor = 'default';
+            mainImgEl.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${data.youtubeId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        };
+        thumbsEl.appendChild(vidThumb);
+    } else {
+        mainImgEl.style.backgroundImage = `url('${data.mainImg}')`;
+        mainImgEl.style.cursor = 'zoom-in';
+    }
     
     data.thumbnails.forEach((thumb, index) => {
         const div = document.createElement('div');
-        div.className = `thumb-img ${index === 0 ? 'active' : ''}`;
+        // If there's no youtubeId, the first thumbnail is active
+        if (!data.youtubeId && index === 0) {
+            div.className = 'thumb-img active';
+        } else {
+            div.className = 'thumb-img';
+        }
+        
         div.style.backgroundImage = `url('${thumb}')`;
         
         div.onclick = function() {
@@ -119,8 +177,12 @@ function openModal(projectId) {
             document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('active'));
             // Add active to clicked
             this.classList.add('active');
+            
+            // Clear iframe if any
+            mainImgEl.innerHTML = '';
             // Change main image
-            mainImgEl.style.backgroundImage = `url('${thumb.replace('w=200', 'w=800')}')`; // Load higher res for main config
+            mainImgEl.style.backgroundImage = `url('${thumb.replace('w=200', 'w=800')}')`; 
+            mainImgEl.style.cursor = 'zoom-in';
         };
         
         thumbsEl.appendChild(div);
@@ -158,6 +220,44 @@ document.addEventListener('DOMContentLoaded', () => {
         nextBtn.addEventListener('click', () => {
             const cardWidth = grid.querySelector('.project-card').offsetWidth + 32; // Include gap
             grid.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        });
+    }
+
+    // Full Screen Image Viewer Logic
+    const mainImgEl = document.getElementById('modalMainImg');
+    const fullScreenViewer = document.getElementById('fullScreenViewer');
+    const fullScreenImg = document.getElementById('fullScreenImg');
+
+    if (mainImgEl && fullScreenViewer && fullScreenImg) {
+        mainImgEl.addEventListener('click', function() {
+            const bg = this.style.backgroundImage;
+            if (bg && bg !== 'none') {
+                const url = bg.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
+                fullScreenImg.src = url;
+                
+                if (url.includes('IllusionPanel')) {
+                    fullScreenImg.style.cursor = 'zoom-in';
+                } else {
+                    fullScreenImg.style.cursor = 'default';
+                }
+                
+                fullScreenViewer.classList.add('active');
+            }
+        });
+
+        fullScreenViewer.addEventListener('click', (e) => {
+            if (e.target === fullScreenImg && fullScreenImg.src.includes('IllusionPanel')) {
+                if (fullScreenViewer.classList.contains('zoomed-container')) {
+                    fullScreenViewer.classList.remove('zoomed-container');
+                    fullScreenImg.style.cursor = 'zoom-in';
+                } else {
+                    fullScreenViewer.classList.add('zoomed-container');
+                    fullScreenImg.style.cursor = 'zoom-out';
+                }
+                return;
+            }
+            fullScreenViewer.classList.remove('active');
+            fullScreenViewer.classList.remove('zoomed-container');
         });
     }
 });
