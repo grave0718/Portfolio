@@ -170,50 +170,39 @@ function openModal(projectId) {
         };
         thumbsFrag.appendChild(vidThumb);
     } else {
-        const img = new Image();
-        img.src = data.mainImg;
-        img.decoding = "async";
-        img.onload = () => {
-            mainImgEl.style.backgroundImage = `url('${data.mainImg}')`;
-        };
+        mainImgEl.style.backgroundImage = `url('${data.mainImg}')`;
         mainImgEl.style.cursor = 'zoom-in';
     }
     
     data.thumbnails.forEach((thumb, index) => {
         const div = document.createElement('div');
-        // If there's no youtubeId, the first thumbnail is active
-        if (!data.youtubeId && index === 0) {
+        const isFirstThumb = !data.youtubeId && index === 0;
+        
+        if (isFirstThumb) {
             div.className = 'thumb-img active';
+            div.style.backgroundImage = `url('${thumb}')`;
         } else {
             div.className = 'thumb-img';
+            // Stagger loading the rest of the thumbnails after the modal finishes opening (0.3s)
+            // This prevents UI freezing (jank) from loading many giant webp files at once
+            setTimeout(() => {
+                // Check if modal is still open and right project is active before loading
+                if (document.getElementById('modalTitle').textContent === data.title) {
+                    div.style.backgroundImage = `url('${thumb}')`;
+                }
+            }, 300 + (index * 150));
         }
         
-        // Async image decoding for thumbnails
-        const img = new Image();
-        img.src = thumb;
-        img.decoding = "async";
-        img.onload = () => {
-            div.style.backgroundImage = `url('${thumb}')`;
-        };
-        
         div.onclick = function() {
-            // Remove active from all
             document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('active'));
-            // Add active to clicked
             this.classList.add('active');
             
-            // Clear iframe if any
             mainImgEl.innerHTML = '';
             
-            // Async decode for changing main image highres
+            // Set the high resolution version on click
             const highResUrl = thumb.replace('w=200', 'w=800');
-            const highResImg = new Image();
-            highResImg.src = highResUrl;
-            highResImg.decoding = "async";
-            highResImg.onload = () => {
-                mainImgEl.style.backgroundImage = `url('${highResUrl}')`; 
-                mainImgEl.style.cursor = 'zoom-in';
-            };
+            mainImgEl.style.backgroundImage = `url('${highResUrl}')`; 
+            mainImgEl.style.cursor = 'zoom-in';
         };
         
         thumbsFrag.appendChild(div);
