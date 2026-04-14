@@ -107,23 +107,27 @@ function openModal(projectId) {
     document.getElementById('modalTitle').textContent = data.title;
     document.getElementById('modalDesc').textContent = data.desc;
     
-    // Set Features
+    // Set Features using DocumentFragment
     const featuresEl = document.getElementById('modalFeatures');
     featuresEl.innerHTML = '';
+    const featuresFrag = document.createDocumentFragment();
     data.features.forEach(feature => {
         const li = document.createElement('li');
         li.textContent = feature;
-        featuresEl.appendChild(li);
+        featuresFrag.appendChild(li);
     });
+    featuresEl.appendChild(featuresFrag);
     
-    // Set Tech Stack
+    // Set Tech Stack using DocumentFragment
     const techStackEl = document.getElementById('modalTechStack');
     techStackEl.innerHTML = '';
+    const techFrag = document.createDocumentFragment();
     data.techStack.forEach(tech => {
         const span = document.createElement('span');
         span.textContent = tech;
-        techStackEl.appendChild(span);
+        techFrag.appendChild(span);
     });
+    techStackEl.appendChild(techFrag);
     
     // Set Links
     document.getElementById('modalBlogBtn').href = data.blogLink;
@@ -135,11 +139,20 @@ function openModal(projectId) {
     // Clear any previous iframe and thumbnails
     mainImgEl.innerHTML = '';
     thumbsEl.innerHTML = '';
+    
+    const thumbsFrag = document.createDocumentFragment();
 
     if (data.youtubeId) {
-        // mainImgEl.style.backgroundImage = 'none';
+        mainImgEl.style.backgroundImage = 'none';
         mainImgEl.style.cursor = 'default';
-        mainImgEl.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${data.youtubeId}?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        
+        // Lazy load iframe: Wait 400ms for modal transition to finish
+        setTimeout(() => {
+            // Only inject if the modal is still open for this project
+            if (document.getElementById('modalTitle').textContent === data.title) {
+                mainImgEl.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${data.youtubeId}?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            }
+        }, 400);
         
         // Add a special video thumbnail at the beginning
         const vidThumb = document.createElement('div');
@@ -155,9 +168,14 @@ function openModal(projectId) {
             mainImgEl.style.cursor = 'default';
             mainImgEl.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${data.youtubeId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
         };
-        thumbsEl.appendChild(vidThumb);
+        thumbsFrag.appendChild(vidThumb);
     } else {
-        mainImgEl.style.backgroundImage = `url('${data.mainImg}')`;
+        const img = new Image();
+        img.src = data.mainImg;
+        img.decoding = "async";
+        img.onload = () => {
+            mainImgEl.style.backgroundImage = `url('${data.mainImg}')`;
+        };
         mainImgEl.style.cursor = 'zoom-in';
     }
     
@@ -170,7 +188,13 @@ function openModal(projectId) {
             div.className = 'thumb-img';
         }
         
-        div.style.backgroundImage = `url('${thumb}')`;
+        // Async image decoding for thumbnails
+        const img = new Image();
+        img.src = thumb;
+        img.decoding = "async";
+        img.onload = () => {
+            div.style.backgroundImage = `url('${thumb}')`;
+        };
         
         div.onclick = function() {
             // Remove active from all
@@ -180,22 +204,41 @@ function openModal(projectId) {
             
             // Clear iframe if any
             mainImgEl.innerHTML = '';
-            // Change main image
-            mainImgEl.style.backgroundImage = `url('${thumb.replace('w=200', 'w=800')}')`; 
-            mainImgEl.style.cursor = 'zoom-in';
+            
+            // Async decode for changing main image highres
+            const highResUrl = thumb.replace('w=200', 'w=800');
+            const highResImg = new Image();
+            highResImg.src = highResUrl;
+            highResImg.decoding = "async";
+            highResImg.onload = () => {
+                mainImgEl.style.backgroundImage = `url('${highResUrl}')`; 
+                mainImgEl.style.cursor = 'zoom-in';
+            };
         };
         
-        thumbsEl.appendChild(div);
+        thumbsFrag.appendChild(div);
     });
+
+    thumbsEl.appendChild(thumbsFrag);
 
     // Show modal
     modal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    
+    // Prevent layout reflow / Jank: add paddingRight to replace scrollbar width
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
+    document.body.style.overflow = 'hidden'; 
 }
 
 function closeModal() {
     modal.classList.remove('active');
-    document.body.style.overflow = 'auto'; // Restore scrolling
+    
+    // Wait for modal fade out transition before re-enabling scroll logic
+    setTimeout(() => {
+        document.body.style.overflow = 'auto'; // Restore scrolling
+        document.body.style.paddingRight = '0px'; 
+        document.getElementById('modalMainImg').innerHTML = ''; // Stop video playback
+    }, 300);
 }
 
 // Close modal when clicking outside of modal-content
