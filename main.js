@@ -1,5 +1,5 @@
 const projectsData = {
-    'abyss': {
+    'drawIt': {
         title: 'Draw It',
         youtubeId: 'z19XPYQDrIM',
         mainImg: './Images/Projects/DrawIt/Shot1.webp',
@@ -19,7 +19,7 @@ const projectsData = {
         playLink: '#',
         blogLink: '#'
     },
-    'lab': {
+    'dreadRush': {
         title: 'Dread Rush',
         mainImg: './Images/Projects/DreadRush/DreadRush.webp',
         thumbnails: [
@@ -38,16 +38,16 @@ const projectsData = {
         playLink: '#',
         blogLink: '#'
     },
-    'campus': {
+    'illusion': {
         title: '환영(幻影)',
         youtubeId: 'sJhNLfsNqVc',
-        mainImg: './Images/Projects/Illusion/Illusion0.png',
+        mainImg: './Images/Projects/Illusion/Illusion0.webp',
         thumbnails: [
-            '/Images/Projects/Illusion/Illusion0.webp',
-            '/Images/Projects/Illusion/IllusionPanel.webp',
-            '/Images/Projects/Illusion/Illusion1.webp',
-            '/Images/Projects/Illusion/Illusion2.webp',
-            '/Images/Projects/Illusion/Illusion3.webp'
+            './Images/Projects/Illusion/Illusion0.webp',
+            './Images/Projects/Illusion/IllusionPanel.webp',
+            './Images/Projects/Illusion/Illusion1.webp',
+            './Images/Projects/Illusion/Illusion2.webp',
+            './Images/Projects/Illusion/Illusion3.webp'
         ],
         desc: '착각으로 인한 시간의 비가역성을 다룬 인터랙티브 미디어 아트 작품입니다. ',
         features: [
@@ -59,7 +59,7 @@ const projectsData = {
         playLink: '#',
         blogLink: '#'
     },
-    'factory': {
+    'factoryRunner': {
         title: 'Factory Runner',
         mainImg: './Images/Projects/FactoryRunner/OBBY.webp',
         thumbnails: [
