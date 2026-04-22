@@ -17,7 +17,8 @@ const projectsData = {
         ],
         techStack: ['Unity', 'C#', 'Meta SDK', 'Shader Graph'],
         playLink: '#',
-        blogLink: '#'
+        blogLink: 'https://velog.io/@kyuwon3197/series/Draw-Eat',
+        blogText: 'Velog 보러가기'
     },
     'dreadRush': {
         title: 'Dread Rush',
@@ -36,7 +37,8 @@ const projectsData = {
         ],
         techStack:['Unity', 'C#', 'Meta SDK'],
         playLink: '#',
-        blogLink: '#'
+        blogLink: '#',
+        blogText: '개발과정 추가예정'
     },
     'illusion': {
         title: '환영(幻影)',
@@ -57,13 +59,14 @@ const projectsData = {
         ],
         techStack: ['Arduino', 'TouchDesigner'],
         playLink: '#',
-        blogLink: '#'
+        blogLink: '#',
+        blogText: '개발과정 추가예정'
     },
     'factoryRunner': {
         title: 'Factory Runner',
-        mainImg: './Images/Projects/FactoryRunner/OBBY.webp',
+        mainImg: './Images/Projects/FactoryRunner/OBBY1.webp',
         thumbnails: [
-            './Images/Projects/FactoryRunner/OBBY.webp',
+            './Images/Projects/FactoryRunner/OBBY1.webp',
             './Images/Projects/FactoryRunner/FactoryRunner1.webp',
             './Images/Projects/FactoryRunner/FactoryRunner2.webp',
             './Images/Projects/FactoryRunner/FactoryRunner3.webp',
@@ -78,7 +81,8 @@ const projectsData = {
         ],
         techStack: ['Overdare', 'Luau'],
         playLink: '#',
-        blogLink: '#'
+        blogLink: '#',
+        blogText: '개발과정 추가예정'
     },
     'graduation': {
         title: '졸업작품 (준비중)',
@@ -93,7 +97,8 @@ const projectsData = {
         ],
         techStack: ['TBA'],
         playLink: '#',
-        blogLink: '#'
+        blogLink: '#',
+        blogText: '개발과정 추가예정'
     }
 };
 
@@ -130,7 +135,24 @@ function openModal(projectId) {
     techStackEl.appendChild(techFrag);
     
     // Set Links
-    document.getElementById('modalBlogBtn').href = data.blogLink;
+    const blogBtn = document.getElementById('modalBlogBtn');
+    if (data.blogLink === '#') {
+        blogBtn.removeAttribute('href');
+        blogBtn.removeAttribute('target');
+        blogBtn.style.cursor = 'default';
+        blogBtn.style.opacity = '0.7';
+    } else {
+        blogBtn.href = data.blogLink;
+        blogBtn.setAttribute('target', '_blank');
+        blogBtn.style.cursor = 'pointer';
+        blogBtn.style.opacity = '1';
+    }
+    
+    if (data.blogText) {
+        blogBtn.innerHTML = `<i class="fas fa-blog"></i> ${data.blogText}`;
+    } else {
+        blogBtn.innerHTML = `<i class="fas fa-blog"></i> 개발 과정 보기`;
+    }
     
     // Set Images
     const mainImgEl = document.getElementById('modalMainImg');
@@ -142,41 +164,14 @@ function openModal(projectId) {
     
     const thumbsFrag = document.createDocumentFragment();
 
-    if (data.youtubeId) {
-        mainImgEl.style.backgroundImage = 'none';
-        mainImgEl.style.cursor = 'default';
-        
-        // Lazy load iframe: Wait 400ms for modal transition to finish
-        setTimeout(() => {
-            // Only inject if the modal is still open for this project
-            if (document.getElementById('modalTitle').textContent === data.title) {
-                mainImgEl.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${data.youtubeId}?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-            }
-        }, 400);
-        
-        // Add a special video thumbnail at the beginning
-        const vidThumb = document.createElement('div');
-        vidThumb.className = 'thumb-img active';
-        vidThumb.style.backgroundImage = `url('https://img.youtube.com/vi/${data.youtubeId}/mqdefault.jpg')`;
-        vidThumb.style.position = 'relative';
-        vidThumb.innerHTML = '<i class="fab fa-youtube" style="color:#ff0000; font-size: 2rem; position: absolute; top:50%; left:50%; transform:translate(-50%, -50%); filter: drop-shadow(0px 0px 4px rgba(0,0,0,0.8));"></i>';
-        
-        vidThumb.onclick = function() {
-            document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('active'));
-            this.classList.add('active');
-            mainImgEl.style.backgroundImage = 'none';
-            mainImgEl.style.cursor = 'default';
-            mainImgEl.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${data.youtubeId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-        };
-        thumbsFrag.appendChild(vidThumb);
-    } else {
-        mainImgEl.style.backgroundImage = `url('${data.mainImg}')`;
-        mainImgEl.style.cursor = 'zoom-in';
-    }
+    // Set initial main image
+    mainImgEl.style.backgroundImage = `url('${data.mainImg}')`;
+    mainImgEl.style.cursor = 'zoom-in';
     
+    // Add image thumbnails first
     data.thumbnails.forEach((thumb, index) => {
         const div = document.createElement('div');
-        const isFirstThumb = !data.youtubeId && index === 0;
+        const isFirstThumb = index === 0;
         
         if (isFirstThumb) {
             div.className = 'thumb-img active';
@@ -207,6 +202,31 @@ function openModal(projectId) {
         
         thumbsFrag.appendChild(div);
     });
+
+    // Add YouTube thumbnail at the end if it exists
+    if (data.youtubeId) {
+        const vidThumb = document.createElement('div');
+        vidThumb.className = 'thumb-img';
+        
+        // Load thumbnail with delay to match other thumbnails stagger
+        setTimeout(() => {
+            if (document.getElementById('modalTitle').textContent === data.title) {
+                vidThumb.style.backgroundImage = `url('https://img.youtube.com/vi/${data.youtubeId}/mqdefault.jpg')`;
+            }
+        }, 300 + (data.thumbnails.length * 150));
+
+        vidThumb.style.position = 'relative';
+        vidThumb.innerHTML = '<i class="fab fa-youtube" style="color:#ff0000; font-size: 2rem; position: absolute; top:50%; left:50%; transform:translate(-50%, -50%); filter: drop-shadow(0px 0px 4px rgba(0,0,0,0.8));"></i>';
+        
+        vidThumb.onclick = function() {
+            document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('active'));
+            this.classList.add('active');
+            mainImgEl.style.backgroundImage = 'none';
+            mainImgEl.style.cursor = 'default';
+            mainImgEl.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${data.youtubeId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        };
+        thumbsFrag.appendChild(vidThumb);
+    }
 
     thumbsEl.appendChild(thumbsFrag);
 

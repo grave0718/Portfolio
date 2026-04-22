@@ -21,7 +21,13 @@
         }
         .resume-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            align-items: start;
+        }
+        .resume-col {
+            display: flex;
+            flex-direction: column;
             gap: 2rem;
         }
         .resume-block {
@@ -71,6 +77,84 @@
         .resume-item ul li {
             margin-bottom: 5px;
         }
+
+        /* --- PDF 다운로드(Print) 전용 스타일 --- */
+        @media print {
+            header, .hero, .about-me, button, .btn-primary {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                font-size: 0.85rem !important;
+                line-height: 1.4 !important;
+            }
+            .resume-section {
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .screen-title { display: none !important; }
+            .print-profile { display: flex !important; justify-content: space-between !important; align-items: flex-end !important; width: 100% !important; }
+            
+            .resume-header {
+                border-bottom: 2px solid black !important;
+                margin-bottom: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+            .print-profile h2 {
+                color: black !important;
+                font-size: 1.6rem !important;
+            }
+            .print-profile img {
+                width: 80px !important;
+                height: 105px !important;
+            }
+            .resume-item-title, .resume-item-desc, .resume-item ul {
+                color: black !important;
+            }
+            .resume-block h3 {
+                color: #333 !important;
+                margin-bottom: 0.5rem !important;
+                font-size: 1.1rem !important;
+            }
+            .resume-item-date {
+                color: #555 !important;
+                font-size: 0.8rem !important;
+            }
+            .resume-block {
+                background: transparent !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                break-inside: avoid;
+            }
+            .resume-col {
+                gap: 0.5rem !important;
+            }
+            .resume-item {
+                margin-bottom: 0.5rem !important;
+            }
+            .resume-item-title {
+                font-size: 0.95rem !important;
+            }
+            .resume-grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 1rem !important;
+            }
+            .resume-item ul {
+                margin-top: 2px !important;
+                padding-left: 15px !important;
+            }
+            .resume-item ul li {
+                margin-bottom: 2px !important;
+            }
+            @page {
+                size: A4;
+                margin: 8mm;
+            }
+        }
     </style>
 </head>
 
@@ -97,7 +181,7 @@
                 </p>
 
                 <div class="cta-group">
-                    <a href="#" target="_blank" class="btn-primary" style="text-decoration: none;"><i class="fas fa-blog"></i> Velog</a>
+                    <a href="https://velog.io/@kyuwon3197/posts" target="_blank" class="btn-primary" style="text-decoration: none;"><i class="fas fa-blog"></i> Velog</a>
                     <!-- 나중에 추가
                     <div class="social-links">
                         <i class="fab fa-github"></i>
@@ -187,114 +271,135 @@
 
         <section class="resume-section">
             <div class="resume-header">
-                <h2>이력서</h2>
+                <!-- 웹 화면용 타이틀 -->
+                <div class="screen-title" style="display: flex; justify-content: space-between; align-items: flex-end;">
+                    <h2>이력서</h2>
+                    <button onclick="window.print()" class="btn-primary" style="padding: 10px 20px; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; border: none; cursor: pointer;">
+                        <i class="fas fa-download" style="font-size: 1.1rem;"></i> 이력서 저장
+                    </button>
+                </div>
+                
+                <!-- 인쇄(PDF) 전용 타이틀 -->
+                <div class="print-profile" style="display: none;">
+                    <div>
+                        <h2 style="margin-bottom: 5px;">김규원</h2>
+                        <p style="color: #333; margin: 0; font-size: 0.95rem;">가상현실 개발자 | grave0718@gmail.com</p>
+                    </div>
+                    <img src="./Images/Profile/김규원2.jpg" alt="Profile" style="width: 80px; height: 105px; object-fit: cover; border-radius: 8px;">
+                </div>
             </div>
             
             <div class="resume-grid">
-                <div class="resume-block">
-                    <h3><i class="fas fa-briefcase"></i> Experience</h3>
-                    <div class="resume-item">
-                        <div class="resume-item-header">
-                            <div class="resume-item-title">미디어 아트 전시 실물 구현 및 기술 담당</div>
-                            <div class="resume-item-date">2026.01</div>
+                <!-- 좌측 그룹: Experience -->
+                <div class="resume-col">
+                    <div class="resume-block">
+                        <h3><i class="fas fa-briefcase"></i> Experience</h3>
+                        <div class="resume-item">
+                            <div class="resume-item-header">
+                                <div class="resume-item-title">미디어 아트 전시 실물 구현 및 기술 담당</div>
+                                <div class="resume-item-date">2026.01</div>
+                            </div>
+                            <div class="resume-item-desc">
+                                <ul>
+                                    <li>HCI 디자인학회 뉴 챌린지상 수상</li>
+                                    <li>아두이노(Arduino)와 터치디자이너를 연동한 인터랙티브 하드웨어 시스템 구축</li>
+                                    <li>착각과 시간의 비가역성을 주제로 한 작품 '환영(幻影)' 전시 참여</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="resume-item-desc">
-                            <ul>
-                                <li>HCI 디자인학회 뉴 챌린지상 수상</li>
-                                <li>아두이노(Arduino)와 터치디자이너를 연동한 인터랙티브 하드웨어 시스템 구축</li>
-                                <li>착각과 시간의 비가역성을 주제로 한 작품 '환영(幻影)' 전시 참여</li>
-                            </ul>
+                        <div class="resume-item">
+                            <div class="resume-item-header">
+                                <div class="resume-item-title">OVERDARE 커뮤니티 공모전 출품작 개발</div>
+                                <div class="resume-item-date">2025.10</div>
+                            </div>
+                            <div class="resume-item-desc">
+                                <ul>
+                                    <li>공모전 2위 수상</li>
+                                    <li>OVERDARE 엔진을 사용하여 OBBY 게임 기획 및 개발 주도</li>
+                                    <li>제한된 시간 내 OBBY 게임 Luau언어를 사용한 코딩 담당</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="resume-item">
-                        <div class="resume-item-header">
-                            <div class="resume-item-title">OVERDARE 커뮤니티 공모전 출품작 개발</div>
-                            <div class="resume-item-date">2025.10</div>
-                        </div>
-                        <div class="resume-item-desc">
-                            <ul>
-                                <li>공모전 2위 수상</li>
-                                <li>OVERDARE 엔진을 사용하여 OBBY 게임 기획 및 개발 주도</li>
-                                <li>제한된 시간 내 OBBY 게임 Luau언어를 사용한 코딩 담당</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="resume-item">
-                        <div class="resume-item-header">
-                            <div class="resume-item-title">핸드트래킹 기반 VR 로봇 쿠키 드로잉 (Draw It) 개발</div>
-                            <div class="resume-item-date">2025.12</div>
-                        </div>
-                        <div class="resume-item-desc">
-                            <ul>
-                                <li>부산 벡스코 전시 진행</li>
-                                <li>Meta All in One SDK를 활용하여 컨트롤러 없이 손만으로 조작하는 VR 핸드트래킹 드로잉 구현</li>
-                                <li>VR 가상 공간에서의 드로잉으로 Shader Graph와 연동하는 작업 진행</li>
-                            </ul>
+                        <div class="resume-item">
+                            <div class="resume-item-header">
+                                <div class="resume-item-title">핸드트래킹 기반 VR 로봇 쿠키 드로잉 (Draw It) 개발</div>
+                                <div class="resume-item-date">2025.12</div>
+                            </div>
+                            <div class="resume-item-desc">
+                                <ul>
+                                    <li>부산 벡스코 전시 진행</li>
+                                    <li>Meta All in One SDK를 활용하여 컨트롤러 없이 손만으로 조작하는 VR 핸드트래킹 드로잉 구현</li>
+                                    <li>VR 가상 공간에서의 드로잉으로 Shader Graph와 연동하는 작업 진행</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="resume-block">
-                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-                    <div class="resume-item">
-                        <div class="resume-item-header">
-                            <div class="resume-item-title">상명대학교 (천안)</div>
-                            <div class="resume-item-date">2021.03 - Present</div>
-                        </div>
-                        <div class="resume-item-desc">
-                            ARVR미디어디자인 학부 재학 중<br>
-                            게임 엔진(Unity 등), 미디어 아트, 레벨 디자인, 3D 모델링 심화 과정 이수.
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="resume-block">
-                    <h3><i class="fas fa-certificate"></i> Certifications</h3>
-                    <div class="resume-item">
-                        <div class="resume-item-header">
-                            <div class="resume-item-title">정보처리기능사</div>
-                            <div class="resume-item-date">2020</div>
-                        </div>
-                        <div class="resume-item-desc">
-                            한국산업인력공단
+                <!-- 우측 그룹: Education, Certifications, Skills -->
+                <div class="resume-col">
+                    <div class="resume-block">
+                        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                        <div class="resume-item">
+                            <div class="resume-item-header">
+                                <div class="resume-item-title">상명대학교 (천안)</div>
+                                <div class="resume-item-date">2021.03 - Present</div>
+                            </div>
+                            <div class="resume-item-desc">
+                                ARVR미디어디자인 학부 재학 중<br>
+                                게임 엔진(Unity 등), 미디어 아트, 레벨 디자인, 3D 모델링 과정 이수.
+                            </div>
                         </div>
                     </div>
-                    <div class="resume-item">
-                        <div class="resume-item-header">
-                            <div class="resume-item-title">컴퓨터활용능력 2급</div>
-                            <div class="resume-item-date">2019</div>
+                    
+                    <div class="resume-block">
+                        <h3><i class="fas fa-certificate"></i> Certifications</h3>
+                        <div class="resume-item">
+                            <div class="resume-item-header">
+                                <div class="resume-item-title">정보처리기능사</div>
+                                <div class="resume-item-date">2020</div>
+                            </div>
+                            <div class="resume-item-desc">
+                                한국산업인력공단
+                            </div>
                         </div>
-                        <div class="resume-item-desc">
-                            대한상공회의소
+                        <div class="resume-item">
+                            <div class="resume-item-header">
+                                <div class="resume-item-title">컴퓨터활용능력 2급</div>
+                                <div class="resume-item-date">2019</div>
+                            </div>
+                            <div class="resume-item-desc">
+                                대한상공회의소
+                            </div>
+                        </div>
+                        <div class="resume-item">
+                            <div class="resume-item-header">
+                                <div class="resume-item-title">ITQ A급</div>
+                                <div class="resume-item-date">2019</div>
+                            </div>
+                            <div class="resume-item-desc">
+                                한국생산성본부
+                            </div>
                         </div>
                     </div>
-                    <div class="resume-item">
-                        <div class="resume-item-header">
-                            <div class="resume-item-title">ITQ A급</div>
-                            <div class="resume-item-date">2019</div>
+                    
+                    <div class="resume-block">
+                        <h3><i class="fas fa-tools"></i> Skills</h3>
+                        <div class="resume-item">
+                            <div class="resume-item-header">
+                                <div class="resume-item-title">Development (개발)</div>
+                            </div>
+                            <div class="resume-item-desc">
+                                Unity 3D, C#, Meta XR SDK,  Unreal Engine 5, Python, Arduino
+                            </div>
                         </div>
-                        <div class="resume-item-desc">
-                            한국생산성본부
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="resume-block">
-                    <h3><i class="fas fa-tools"></i> Skills</h3>
-                    <div class="resume-item">
-                        <div class="resume-item-header">
-                            <div class="resume-item-title">Development (개발)</div>
-                        </div>
-                        <div class="resume-item-desc">
-                            Unity 3D, C#, Meta XR SDK,  Unreal Engine 5, Python, Arduino
-                        </div>
-                    </div>
-                    <div class="resume-item">
-                        <div class="resume-item-header">
-                            <div class="resume-item-title">Design (디자인 및 기획)</div>
-                        </div>
-                        <div class="resume-item-desc">
-                            Level Design, Blender, Photoshop, Figma, TouchDesigner
+                        <div class="resume-item">
+                            <div class="resume-item-header">
+                                <div class="resume-item-title">Design (디자인 및 기획)</div>
+                            </div>
+                            <div class="resume-item-desc">
+                                Level Design, Blender, Photoshop, Figma, TouchDesigner
+                            </div>
                         </div>
                     </div>
                 </div>
