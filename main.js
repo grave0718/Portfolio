@@ -1,13 +1,13 @@
 const projectsData = {
-    'drawIt': {
-        title: 'Draw It',
+    'drawEat': {
+        title: 'Draw Eat',
         youtubeId: 'z19XPYQDrIM',
-        mainImg: './Images/Projects/DrawIt/Shot1.webp',
+        mainImg: './Images/Projects/DrawEat/Shot1.webp',
         thumbnails: [
-            './Images/Projects/DrawIt/Shot1.webp',
-            './Images/Projects/DrawIt/PlayShot1.webp',
-            './Images/Projects/DrawIt/PlayShot2.webp',
-            './Images/Projects/DrawIt/PlayShot3.webp'
+            './Images/Projects/DrawEat/Shot1.webp',
+            './Images/Projects/DrawEat/PlayShot1.webp',
+            './Images/Projects/DrawEat/PlayShot2.webp',
+            './Images/Projects/DrawEat/PlayShot3.webp'
         ],
         desc: '가상현실에서 핸드트래킹을 통해 그림을 그린 후 로봇팔을 통해 실제 쿠키 위에 그림을 그려주는 게임입니다. 부산 벡스코에서 전시하였습니다.',
         features: [
