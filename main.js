@@ -137,11 +137,13 @@ function openModal(projectId) {
     // Set Links
     const blogBtn = document.getElementById('modalBlogBtn');
     if (data.blogLink === '#') {
+        blogBtn.style.display = 'none';
         blogBtn.removeAttribute('href');
         blogBtn.removeAttribute('target');
         blogBtn.style.cursor = 'default';
         blogBtn.style.opacity = '0.7';
     } else {
+        blogBtn.style.display = '';
         blogBtn.href = data.blogLink;
         blogBtn.setAttribute('target', '_blank');
         blogBtn.style.cursor = 'pointer';

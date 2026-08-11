@@ -745,14 +745,14 @@ h3 {
 
 .modal-body {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     overflow-y: auto;
 }
 
 /* Modal Split Layout */
 .modal-left {
     flex: 1.4;
-    min-width: 300px;
+    min-width: 0;
     background: #000;
 }
 
@@ -761,6 +761,7 @@ h3 {
     min-width: 300px;
     padding: 30px;
     border-left: 1px solid #222;
+    border-top: none;
 }
 
 /* Modal Graphics */
@@ -773,6 +774,7 @@ h3 {
 
 .modal-thumbnails {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     padding: 15px;
     background: #050505;
@@ -919,4 +921,86 @@ h3 {
     height: auto;
     max-height: none;
     margin: 0 auto;
+}
+
+/* ==========================================================================
+   Mobile Optimization (Hero, Project Card, Resume, Contact)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Hero Section */
+    .hero {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 5rem 5%;
+        gap: 2rem;
+    }
+    .hero-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+    .hero-visual {
+        justify-content: center;
+        width: 100%;
+    }
+    .image-card {
+        height: 400px;
+        max-width: 320px;
+    }
+    
+    /* Layout Paddings */
+    .projects-section, .about-me, .resume-section, .contact-section {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    
+    /* Project Card & Modal */
+    .project-img {
+        height: 300px;
+    }
+    .modal-right {
+        padding: 20px;
+    }
+    .modal-thumbnails {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    /* Resume & Contact */
+    .resume-grid {
+        grid-template-columns: 1fr;
+    }
+    .resume-header h2 {
+        font-size: 2rem;
+    }
+    .contact-card {
+        padding: 30px 20px;
+    }
+    .contact-card h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+    .image-card {
+        height: 300px;
+        max-width: 260px;
+    }
+    .project-img {
+        height: 220px;
+    }
+    .badge-unity {
+        padding: 8px 16px;
+        font-size: 0.75rem;
+    }
+    .btn-primary {
+        padding: 12px 24px;
+    }
 }
